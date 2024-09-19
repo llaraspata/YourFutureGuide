@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Big Shoulders Display', sans-serif;
+  }
+  
+  :root {
+    --primary-color: #3CAAFB;
+    --hover-color: #1773b6;
+    --secondary-color: #361B44;
+    --description-color: #1d1d1d;
+    --rec-color: #222222;
+    --accent-color: #97cff8;
+    --shadow-color: #E8E8E8;
+    --extract-color: #edf1ee;
+    --error-color: #be1c1c;
+  }
+  
+  button.primary {
+    padding: 10px;
+    border: solid 1px var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+  }
+  
+
