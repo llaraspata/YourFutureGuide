@@ -7,7 +7,7 @@ from langchain.schema.document import Document
 from langchain_community.vectorstores import Chroma
 
 CHROMA_PATH = "chroma"
-DATA_PATH = "C:\\Repos\\llaraspata\\YourFutureGuide\\data"
+DATA_PATH = "/home/llaraspata3/YourFutureGuide/data"
 
 
 
