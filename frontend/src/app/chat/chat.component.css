@@ -1,0 +1,101 @@
+/* Container for the chat messages */
+.chat-container {
+    width: 100%;
+    max-width: 1200px;
+    width: 800px;
+    height: 400px;
+    
+    padding: 10px;
+    overflow-y: auto;
+    border-radius: 15px;
+    margin: 0 auto;
+    /*box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);*/
+}
+
+/* Wrapper for messages and avatars */
+.message-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Avatar styling */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Avatar for sent messages on the right */
+.message-wrapper.sent .avatar {
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+/* Basic message bubble */
+.message {
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 100%;
+    font-family: "Outfit", sans-serif;
+    font-size: 14px;
+}
+
+/* Message received (other user) */
+.message.received {
+    background-color: #e0e0e0;
+    text-align: left;
+}
+
+/* Message sent (current user) */
+.message.sent {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: right;
+    margin-left: auto; /* Pushes the message to the right */
+}
+
+/* Align sent messages to the right */
+.message-wrapper.sent {
+    justify-content: flex-end;
+}
+
+/* Input area for sending messages */
+.message-input {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    max-width: 1200px;
+    width: 800px;
+    margin: 10px auto;
+}
+
+.message-input input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-family: "Outfit", sans-serif;
+    font-size: 14px;
+}
+
+.message-input button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    font-family: "Outfit", sans-serif;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.message-input button:hover {
+    background-color: var(--hover-color);
+}
