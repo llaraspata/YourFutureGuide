@@ -1,6 +1,6 @@
 import os
 import shutil
-from langchain_openai import AzureOpenAIEmbeddings
+from langchain_community.embeddings.ollama import OllamaEmbeddings
 from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
@@ -12,13 +12,7 @@ DATA_PATH = "C:\\Repos\\llaraspata\\YourFutureGuide\\data"
 
 
 def get_embedding_function():
-    # TODO: Fill once got the Azure OpenAI key
-    embeddings = AzureOpenAIEmbeddings(
-        model="model",
-        azure_endpoint="endpoint",
-        api_key=os.getenv("AZURE_OPENAI_KEY"),  
-        openai_api_version="version",
-    )
+    embeddings = OllamaEmbeddings(model="nomic-embed-text")
 
     return embeddings
 
