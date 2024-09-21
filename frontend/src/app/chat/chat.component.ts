@@ -16,35 +16,15 @@ import { Option } from './Option';
 export class ChatComponent {
   @ViewChild("message", { static: false }) message?: ElementRef;
 
+  initialOptions!: Option[];
+
   chatMessages: Message[] = [];
   order = 0;
   newMsg!: Message;
 
-  options!: Option[];
-
 
   constructor() {
-    this.chatMessages = [
-      {
-        "display_order": 1,
-        "type": "R", //received
-        "content": "Cosa vorresti scoprire?"
-      },
-      {
-        "display_order": 2,
-        "type": "S", //sent
-        "content": "Trovare il corso di laurea che più di addice a me."
-      },
-      {
-        "display_order": 3,
-        "type": "R", //received
-        "content": "Quali sono le tue principali passioni?"
-      }
-    ];
-
-    this.order = this.chatMessages.length;
-
-    this.options = [
+    this.initialOptions = [
       {
         "id": 1,
         "icon": "📚",
@@ -56,7 +36,29 @@ export class ChatComponent {
         "content": "Il percorso professionale perfetto per me"
       } 
     ];
-    
+
+    this.chatMessages = [
+      {
+        "display_order": 1,
+        "type": "R", //received
+        "content": "Cosa vorresti scoprire?",
+        "options": this.initialOptions
+      },
+      {
+        "display_order": 2,
+        "type": "S", //sent
+        "content": "Trovare il corso di laurea che più di addice a me.",
+        "options": []
+      },
+      {
+        "display_order": 3,
+        "type": "R", //received
+        "content": "Quali sono le tue principali passioni?",
+        "options": []
+      }
+    ];
+
+    this.order = this.chatMessages.length;    
   }
 
 
@@ -69,7 +71,8 @@ export class ChatComponent {
     this.newMsg = {
       "display_order": this.order++,
       "type": "S",
-      "content": this.message.nativeElement.value
+      "content": this.message.nativeElement.value,
+      "options": []
     };
 
     this.chatMessages.push(this.newMsg);

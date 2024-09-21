@@ -10,9 +10,9 @@
             </div>
 
             <!-- Card delle alternative -->
-            @if(options.length > 0) {
+            @if(msg.options.length > 0) {
                 <div class="option-card">
-                    @for (opt of options; track opt) {
+                    @for (opt of msg.options; track opt) {
                         <div class="option" id={{opt.id}}>
                             <p>
                                 @if(opt.icon != "") {
