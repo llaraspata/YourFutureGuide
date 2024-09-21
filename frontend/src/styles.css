@@ -12,12 +12,13 @@
     --primary-color: #3CAAFB;
     --hover-color: #1773b6;
     --secondary-color: #361B44;
-    --secondary-light-color: #522d64;
-    --secondary-dark-color: #1e1522;
+    --secondary-light-color: #F2CD5D;
+    --secondary-dark-color: #dfb536;
     --description-color: #1d1d1d;
     --rec-color: #222222;
     --accent-color: #bddef7;
     --hover-accent-color: #97cff8;
+    --border-color: #cecece;
     --shadow-color: #E8E8E8;
     --extract-color: #edf1ee;
     --error-color: #be1c1c;
@@ -38,3 +39,5 @@
     margin-right:auto;
     margin-left:auto;
   }
+
+  

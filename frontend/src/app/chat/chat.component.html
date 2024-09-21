@@ -1,18 +1,42 @@
 <div class="chat-container">
-    <div class="message-wrapper received">
-        <img class="avatar" src="llama.jpg" alt="User Avatar">
-        <div class="message received">
-            <p>Hello! How are you?</p>
-        </div>
-    </div>
-    <div class="message-wrapper sent">
-        <div class="message sent">
-            <p>I'm good, thanks! How about you?</p>
-        </div>
-    </div>
+    @for (msg of chatMessages; track msg)
+    {
+        @if(msg.type == "R") {
+            <div class="message-wrapper received">
+                <img class="avatar" src="llama.jpg" alt="User Avatar">
+                <div class="message received">
+                    <p>{{ msg.content }}</p>
+                </div>
+            </div>
+
+            <!-- Card delle alternative -->
+            @if(options.length > 0) {
+                <div class="option-card">
+                    @for (opt of options; track opt) {
+                        <div class="option" id={{opt.id}}>
+                            <p>
+                                @if(opt.icon != "") {
+                                    {{opt.icon}} <br>
+                                }
+                                {{opt.content}}</p>
+                        </div>
+                    }
+                </div>
+            }
+        }
+        @else {
+            <div class="message-wrapper sent">
+                <div class="message sent">
+                    <p>{{ msg.content }}</p>
+                </div>
+            </div>
+        }
+    }
 </div>
 
+
+
 <div class="message-input">
-    <input type="text" placeholder="Type your message..." />
-    <button>Send</button>
+    <input type="text" placeholder="Type your message..." #message/>
+    <button (click)="sendMessage()">Send</button>
 </div>

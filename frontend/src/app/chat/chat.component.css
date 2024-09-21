@@ -3,12 +3,12 @@
     width: 100%;
     max-width: 1200px;
     width: 800px;
-    height: 400px;
-    
+    height: max-content;
     padding: 10px;
     overflow-y: auto;
     border-radius: 15px;
     margin: 0 auto;
+    overflow: auto;
     /*box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);*/
 }
 
@@ -37,14 +37,17 @@
 .message {
     padding: 10px 15px;
     border-radius: 20px;
-    max-width: 100%;
+    max-width: 75%;
     font-family: "Outfit", sans-serif;
-    font-size: 14px;
+    hyphens: auto; /* Attiva l'ipertesto per le sillabe */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
 }
 
 /* Message received (other user) */
 .message.received {
-    background-color: #e0e0e0;
     text-align: left;
 }
 
@@ -52,8 +55,8 @@
 .message.sent {
     background-color: var(--primary-color);
     color: white;
-    text-align: right;
-    margin-left: auto; /* Pushes the message to the right */
+    text-align: left;
+    margin-left: auto;
 }
 
 /* Align sent messages to the right */
@@ -103,4 +106,41 @@
 
 .message-input button:hover {
     background-color: var(--hover-color);
+}
+
+
+/* Container per le opzioni */
+.option-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-gap: 15px;
+    margin-top: 10px;
+}
+
+/* Stile per ciascuna opzione */
+.option {
+    color: var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    font-family: "Outfit", sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.option:hover {
+    background-color: var(--accent-color);
+    border: 1px solid var(--hover-accent-color);
+
+}
+
+/* Impostazioni responsive */
+.option-card .option {
+    flex: 1 1 calc(50% - 10px); /* 2 opzioni per riga */
+    text-align: center;
+    margin-bottom: 10px;
 }
