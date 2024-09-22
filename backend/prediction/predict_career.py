@@ -1,7 +1,6 @@
 import argparse
 import json
 import ollama
-from backend.data.utility import get_embedding_function
 from backend.prompt.CareerPromptGenerator import CareerPromptGenerator
 
 
@@ -58,6 +57,7 @@ def generate_question(chat, count, usr_answer):
         )
 
     return predict(chat)
+
 
 def predict(chat):
     response = ollama.chat(model='llama3', messages=chat)
