@@ -11,7 +11,7 @@ class DegreePromptGenerator:
     # ------------
     # Prompt generation
     # ------------
-    def generate_prompt(role, qst_count, usr_answer="", rag_context=""):
+    def generate_prompt(role, qst_count=-1, usr_answer="", rag_context="", ask_for_interest=False):
         """
             TODO
         """
@@ -24,7 +24,9 @@ class DegreePromptGenerator:
 
         elif role == "user":
             if usr_answer:
-                if qst_count < DegreePromptGenerator.QUESTIONS:
+                if ask_for_interest:
+                    prompt = UserPrompt.ASK_INTERESTS % (usr_answer)
+                elif qst_count < DegreePromptGenerator.QUESTIONS:
                     prompt = UserPrompt.ANSWER % (usr_answer)
                 else:
                     prompt = UserPrompt.LAST_ANSWER % (usr_answer, rag_context)

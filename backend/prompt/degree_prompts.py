@@ -14,7 +14,7 @@ class BestDegreeSystemPrompt:
 
 
 class BestDegreeUserPrompt:
-    ANSWER = ""
+    ANSWER = "%s"
 
     LAST_ANSWER = """%s
     
@@ -22,3 +22,7 @@ class BestDegreeUserPrompt:
     
     ### CONTESTO
     %s"""
+
+    ASK_INTERESTS = """%s
+    
+    In base a quello che ci siamo detti, dammi solo le parole chiave che descrivono i miei interessi e passioni."""

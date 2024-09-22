@@ -1,7 +1,7 @@
 import argparse
 import json
 import ollama
-from langchain.vectorstores.chroma import Chroma
+from langchain_community.vectorstores import Chroma
 from backend.data.utility import get_embedding_function
 from backend.prompt.DegreePromptGenerator import DegreePromptGenerator
 
@@ -53,6 +53,12 @@ def generate_question(chat, count, usr_answer):
     elif count == 5:
         context, sources = retreive_docs(chat, usr_answer)
         user_prompt = DegreePromptGenerator.generate_prompt("user", count, usr_answer, rag_context=context)
+        chat.append(
+            {
+                "role": "user",
+                "content": user_prompt
+            }
+        )
 
     else:
         user_prompt = DegreePromptGenerator.generate_prompt("user", count, usr_answer)
@@ -84,18 +90,29 @@ def predict(chat, sources):
     return chat
 
 
-def retreive_docs(chat, last_answer, k=5):
-    formatted_query = ""
+def ask_for_interests(chat, usr_answer):
+    chat_for_interests = chat.copy()
 
-    db = Chroma(persist_directory=CHROMA_PATH, embedding_function=get_embedding_function())
+    user_prompt = DegreePromptGenerator.generate_prompt("user", usr_answer=usr_answer, ask_for_interest=True)
 
-    for msg in chat:
-        if msg["role"] != "system":
-            formatted_query += msg["content"]
-    formatted_query += last_answer
+    chat_for_interests.append(
+        {
+            "role": "user",
+            "content": user_prompt
+        }
+    )
+
+    response = ollama.chat(model='llama3', messages=chat_for_interests)
+
+    return response['message']['content']
+
+
+def retreive_docs(chat, usr_answer, k=3):
+    interests = ask_for_interests(chat, usr_answer)
     
-    results = db.similarity_search_with_score(formatted_query, k)
-
+    db = Chroma(persist_directory=CHROMA_PATH, embedding_function=get_embedding_function())
+    results = db.similarity_search_with_score(interests, k)
+    
     context = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
     sources = [doc.metadata.get("id", None) for doc, _score in results]
 
