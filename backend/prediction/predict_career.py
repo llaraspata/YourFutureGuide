@@ -1,6 +1,6 @@
 import argparse
-from langchain_community.llms.ollama import Ollama
-
+import json
+import ollama
 from backend.data.utility import get_embedding_function
 from backend.prompt.CareerPromptGenerator import CareerPromptGenerator
 
@@ -14,23 +14,33 @@ def main():
     
     args = parser.parse_args()
     usr_answer = args.usr_answer
-    chat = args.chat
-
-    print(usr_answer, chat)
     
-    generate_question(chat, usr_answer)
+    chat = [args.chat]
+
+    flattened = []
+
+    if args.chat != "":
+        chat_json = [json.loads(msg) for msg in chat]
+        flattened = [item for sublist in chat_json for item in sublist]
+
+    i = 0
+    for i in range(CareerPromptGenerator.QUESTIONS + 1):
+        flattened = generate_question(flattened, i, usr_answer)
+
+        i += 1
+        if i <= CareerPromptGenerator.QUESTIONS:
+            usr_answer = input("\n----\n")
+
     
 
-def generate_question(chat, usr_answer):
+def generate_question(chat, count, usr_answer):
     system_prompt = ""
     user_prompt =  ""
 
-    user_prompt = CareerPromptGenerator.generate_prompt("user", len(chat), usr_answer)
-    print(user_prompt)
+    user_prompt = CareerPromptGenerator.generate_prompt("user", count, usr_answer)
 
-    if len(chat) == 0:
+    if count == 0:
         system_prompt = CareerPromptGenerator.generate_prompt("system", 1)
-        print(system_prompt)
 
         chat = [
             {
@@ -46,17 +56,20 @@ def generate_question(chat, usr_answer):
                 "content": user_prompt
             }
         )
-        print(chat)
 
-    predict(chat)
+    return predict(chat)
 
 def predict(chat):
-    model = Ollama(model="llama3")
-    response_text = model.invoke(chat)
+    response = ollama.chat(model='llama3', messages=chat)
     
-    print(response_text)
+    chat.append({
+        "role": "assistant", 
+        "content": response['message']['content']
+    })
+    print("----\n")
+    print(response['message']['content'])
     
-    return response_text
+    return chat
 
 
 if __name__ == "__main__":

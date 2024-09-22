@@ -18,7 +18,7 @@ class DegreePromptGenerator:
         prompt = ""
 
         if role == "system":
-            prompt = SystemPrompt.ROLE_DEFINITION
+            prompt += SystemPrompt.ROLE_DEFINITION
             prompt += SystemPrompt.CHAT_FLOW_DEFINITION
             prompt += SystemPrompt.OUTPUT_WITH_RAG_DEFINITION
 

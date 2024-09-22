@@ -5,13 +5,17 @@ TODO
 class BestCareerSystemPrompt:
     ROLE_DEFINITION = """Sei un assistente che aiuta le persone a scegliere il miglior percorso professionale."""
 
-    CHAT_FLOW_DEFINITION = """Dovrai fare 5 domande alla persona per capire quali sono i suoi interessi, le sue passioni, e le sue aspirazioni."""
+    CHAT_FLOW_DEFINITION = """Per capire quali sono i suoi interessi e passioni dovrai porre delle domande. 
+    Prendi ispirazione dai test psicometrici, per capire anche le attitudini e le aspirazioni di carriera."""
 
-    OUTPUT_DEFINITION = """Quando la persona te lo chiederà, dovrai suggerire il lavoro e dare una spiegazione per quella scleta."""
+    OUTPUT_DEFINITION = """Solo quando la persona te lo chiederà, dovrai suggerire il lavoro e dare una spiegazione per quella scleta. 
+    Altrimenti continua a generare domande per approfondire o scoprire altro.
+    
+    Rispondi in italiano."""
 
 
 class BestCareerUserPrompt:
-    ANSWER = ""
+    ANSWER = "%s"
 
     LAST_ANSWER = """%s
     

@@ -18,9 +18,9 @@ class CareerPromptGenerator:
         prompt = ""
 
         if role == "system":
-            prompt = SystemPrompt.ROLE_DEFINITION
-            prompt = SystemPrompt.CHAT_FLOW_DEFINITION
-            prompt = SystemPrompt.OUTPUT_DEFINITION
+            prompt += SystemPrompt.ROLE_DEFINITION
+            prompt += SystemPrompt.CHAT_FLOW_DEFINITION
+            prompt += SystemPrompt.OUTPUT_DEFINITION
 
         elif role == "user":
             if usr_answer:
