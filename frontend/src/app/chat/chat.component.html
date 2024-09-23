@@ -1,5 +1,5 @@
 <div class="chat-container">
-    @for (msg of chatMessages; track msg)
+    @for (msg of chatMessagesUI; track msg)
     {
         @if(msg.type == "R") {
             <div class="message-wrapper received">
@@ -11,9 +11,9 @@
 
             <!-- Card delle alternative -->
             @if(msg.options.length > 0) {
-                <div class="option-card">
+                <div class="option-card" >
                     @for (opt of msg.options; track opt) {
-                        <div class="option" id={{opt.id}}>
+                        <div class="option" id={{opt.id}} (click)="startConversation(opt.id)">
                             <p>
                                 @if(opt.icon != "") {
                                     {{opt.icon}} <br>
@@ -32,9 +32,20 @@
             </div>
         }
     }
+
+    @if(isWriting) {
+        <div class="message-wrapper received">
+            <img class="avatar" src="llama.jpg" alt="User Avatar">
+            <div class="message received">
+                <div class="typing-indicator">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </div>
+    }
 </div>
-
-
 
 <div class="message-input">
     <input type="text" placeholder="Type your message..." #message/>
