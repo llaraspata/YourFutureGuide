@@ -6,7 +6,7 @@
     display: flex;
     align-items: flex-start; /* Center vertically */
     justify-content: center; /* Center horizontally */  
-    height: 45px;
+    height: auto;
     padding: var(--content-padding);
     text-decoration: none;
   }

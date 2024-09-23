@@ -2,9 +2,11 @@
 .chat-container {
     max-width: 1200px;
     width: 800px;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
     overflow-y: auto;
-    height: 68vh;
+    height: 74.5vh;
     border-radius: 15px;
     margin: 0 auto;
 }
@@ -65,9 +67,10 @@
 .message-input {
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
     margin: 10px auto;
-    margin-top: 10px;
     margin-bottom: 65px;
     border-radius: 10px;
     max-width: 1200px;
