@@ -1,22 +1,19 @@
 /* Container for the chat messages */
 .chat-container {
-    width: 100%;
     max-width: 1200px;
     width: 800px;
-    height: max-content;
     padding: 10px;
     overflow-y: auto;
+    height: 68vh;
     border-radius: 15px;
     margin: 0 auto;
-    overflow: auto;
-    /*box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);*/
 }
 
 /* Wrapper for messages and avatars */
 .message-wrapper {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 /* Avatar styling */

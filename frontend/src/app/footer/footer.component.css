@@ -3,6 +3,7 @@
   }
   
   footer {
+    overflow: hidden;
     display: flex;
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */  

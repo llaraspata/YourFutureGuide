@@ -6,6 +6,7 @@
   body {
     font-family: 'Big Shoulders Display', sans-serif;
     background-color: #f1f1f1;
+    overflow: hidden;
   }
   
   :root {
