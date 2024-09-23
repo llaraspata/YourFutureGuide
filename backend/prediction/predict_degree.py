@@ -27,14 +27,14 @@ def main():
 
     i = 0
     for i in range(DegreePromptGenerator.QUESTIONS + 1):
-        flattened = generate_question(flattened, i, usr_answer)
+        flattened = predict(flattened, i, usr_answer)
 
         i += 1
         if i <= DegreePromptGenerator.QUESTIONS:
             usr_answer = input("\n----\n")
 
 
-def generate_question(chat, count, usr_answer):
+def predict(chat, count, usr_answer):
     system_prompt = ""
     user_prompt =  ""
 
@@ -69,10 +69,10 @@ def generate_question(chat, count, usr_answer):
             }
         )
 
-    return predict(chat, sources)
+    return ask_llm(chat, sources)
 
 
-def predict(chat, sources):
+def ask_llm(chat, sources):
     response = ollama.chat(model='llama3', messages=chat)
     
     chat.append({
@@ -87,7 +87,7 @@ def predict(chat, sources):
 
     print(output_msg)
     
-    return chat
+    return chat, response['message']['content']
 
 
 def ask_for_interests(chat, usr_answer):

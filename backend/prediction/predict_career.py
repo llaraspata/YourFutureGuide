@@ -24,7 +24,7 @@ def main():
 
     i = 0
     for i in range(CareerPromptGenerator.QUESTIONS + 1):
-        flattened = generate_question(flattened, i, usr_answer)
+        flattened = predict(flattened, i, usr_answer)
 
         i += 1
         if i <= CareerPromptGenerator.QUESTIONS:
@@ -32,7 +32,7 @@ def main():
 
     
 
-def generate_question(chat, count, usr_answer):
+def predict(chat, count, usr_answer):
     system_prompt = ""
     user_prompt =  ""
 
@@ -56,10 +56,10 @@ def generate_question(chat, count, usr_answer):
             }
         )
 
-    return predict(chat)
+    return ask_llm(chat)
 
 
-def predict(chat):
+def ask_llm(chat):
     response = ollama.chat(model='llama3', messages=chat)
     
     chat.append({
@@ -69,7 +69,7 @@ def predict(chat):
     print("----\n")
     print(response['message']['content'])
     
-    return chat
+    return chat, response['message']['content']
 
 
 if __name__ == "__main__":
