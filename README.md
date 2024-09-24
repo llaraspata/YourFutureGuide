@@ -12,7 +12,7 @@
 
 </div>
 
-**YourFutureGuide** is an LLM-based application to discover which is the most suitable educational or professional path. [LLaMa3-7b](https://ollama.com/library/llama3) will determine so by investigate your interests and aspirations in only 5 shots.
+**YourFutureGuide** is an LLM-based application to discover which is the most suitable educational or professional path. [LLaMa3-7b](https://ollama.com/library/llama3) will determine so by investigating your interests and aspirations in only 5 shots.
 
 <div align="center">
 
