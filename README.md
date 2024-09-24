@@ -88,7 +88,7 @@ To run the **angular frontend** follow the steps below:
    ng serve
    ```
 
-## Citation
+## 🖋️ Citation
 
 ```bibtex
 @misc{laraspata2024YourFutureGuide,
