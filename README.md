@@ -1,7 +1,11 @@
 YourFutureGuide
 ==============================
-[![python](https://img.shields.io/badge/Python-3.11.5-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org)
-[![angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.dev/)
+<p align="center">
+  <img src="/frontend/public/YourFutureGuide.png" alt="logo">
+
+   [![python](https://img.shields.io/badge/Python-3.11.5-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org)
+   [![angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.dev/)
+</p>
 
 TODO
 
