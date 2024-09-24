@@ -12,7 +12,7 @@
 
 </div>
 
-**YourFutureGuide** is an LLM-based application to discover which is the most suitable educational or professional path. [LLaMa3-7b](https://ollama.com/library/llama3) will determine so by investigating your interests and aspirations in only 5 shots.
+**YourFutureGuide** is an LLM-based application to discover which is the most suitable educational or professional path for you. [LLaMa3-7b](https://ollama.com/library/llama3) will determine so by investigating your interests and aspirations in only 5 shots.
 
 <div align="center">
 
@@ -30,7 +30,7 @@ So, a Retreival Augmeted Generation (RAG) mechanism has been implemented at the 
 
 We recommend to use [Python 3.11.5](https://python.domainunion.de/downloads/release/python-3115/) to run our code, due to possible incompatibiities with newr versions.
 
-Moreover, the frontend part of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4. So, be sure that Angular is installed on your machine. You can find details on how to install it in the [Angular Github repository(https://github.com/angular/angular-cli)].
+Moreover, the frontend part of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4. So, be sure that Angular is installed on your machine. You can find details on how to install it in the [Angular Github repository](https://github.com/angular/angular-cli).
 
 ### 🛠️ Installation
 The steps to correctly install the project are described below (both backend and frontend).
