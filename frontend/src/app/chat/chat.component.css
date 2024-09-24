@@ -14,7 +14,7 @@
 /* Wrapper for messages and avatars */
 .message-wrapper {
     display: flex;
-    align-items: center;
+    align-items: top;
     margin-top: 10px;
 }
 
@@ -43,6 +43,10 @@
     overflow-wrap: break-word;
     word-break: break-all;
     white-space: normal;
+}
+
+.message p {
+    white-space: pre-wrap; /* Rispetta sia i ritorni a capo che gli spazi multipli */
 }
 
 /* Message received (other user) */

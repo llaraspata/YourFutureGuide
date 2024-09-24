@@ -1,51 +1,45 @@
 <div class="chat-container">
-    @for (msg of chatMessagesUI; track msg)
-    {
-        @if(msg.type == "R") {
-            <div class="message-wrapper received">
-                <img class="avatar" src="llama.jpg" alt="User Avatar">
-                <div class="message received">
-                    <p>{{ msg.content }}</p>
-                </div>
-            </div>
-
-            <!-- Card delle alternative -->
-            @if(msg.options.length > 0) {
-                <div class="option-card" >
-                    @for (opt of msg.options; track opt) {
-                        <div class="option" id={{opt.id}} (click)="startConversation(opt.id)">
-                            <p>
-                                @if(opt.icon != "") {
-                                    {{opt.icon}} <br>
-                                }
-                                {{opt.content}}</p>
-                        </div>
-                    }
-                </div>
-            }
-        }
-        @else {
-            <div class="message-wrapper sent">
-                <div class="message sent">
-                    <p>{{ msg.content }}</p>
-                </div>
-            </div>
-        }
-    }
-
-    @if(isWriting) {
-        <div class="message-wrapper received">
-            <img class="avatar" src="llama.jpg" alt="User Avatar">
+    <!-- Loop through the chatMessagesUI using *ngFor -->
+    <div *ngFor="let msg of chatMessagesUI; trackBy: trackByMessageId">
+        
+        <!-- Received message block -->
+        <div *ngIf="msg.type === 'R'" class="message-wrapper received">
+            <img class="avatar" src="llama.png" alt="User Avatar">
             <div class="message received">
-                <div class="typing-indicator">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
+                <p>{{ msg.content }}</p>
             </div>
         </div>
-    }
+            
+        <!-- If the message contains options, display the option card -->
+        <div *ngIf="msg.options.length > 0" class="option-card">
+            <div *ngFor="let opt of msg.options" class="option" [id]="opt.id" (click)="startConversation(opt.id)">
+                <p>
+                    <span *ngIf="opt.icon != ''">{{ opt.icon }}<br></span>
+                    {{ opt.content }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Sent message block -->
+        <div *ngIf="msg.type !== 'R'" class="message-wrapper sent">
+            <div class="message sent">
+                <p>{{ msg.content }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="isWriting"class="message-wrapper received">
+        <img class="avatar" src="llama.png" alt="User Avatar">
+        <div class="message received">
+            <div class="typing-indicator">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 <div class="message-input">
     <input type="text" placeholder="Type your message..." #message/>
