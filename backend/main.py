@@ -115,14 +115,7 @@ def ask_llm(request: Request, chat_payload: ChatPayload):
     """
     TODO
     """
-
-    chat_messages = []
-
-    if chat_payload.chat != "":
-        chat_json = [json.loads(msg) for msg in chat_payload.chat]
-        chat_messages = [item for sublist in chat_json for item in sublist]
-        
-    chat_messages, llm_output = predict_career.predict(chat_messages, chat_payload.qst_count, chat_payload.usr_answer)
+    chat_messages, llm_output = predict_career.predict(chat_payload.chat, chat_payload.qst_count, chat_payload.usr_answer)
 
     response = {
             "message": HTTPStatus.OK.phrase,
@@ -141,6 +134,7 @@ def ask_llm(request: Request, chat_payload: ChatPayload):
     """
     TODO
     """
+    print(chat_payload)
     chat_messages, llm_output = predict_degree.predict(chat_payload.chat, chat_payload.qst_count, chat_payload.usr_answer)
 
     response = {
