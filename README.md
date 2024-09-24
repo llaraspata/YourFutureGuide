@@ -14,13 +14,17 @@
 
 **YourFutureGuide** is an LLM-based application to discover which is the most suitable educational or professional path. [LLaMa3-7b](https://ollama.com/library/llama3) will determine so by investigate your interests and aspirations in only 5 shots.
 
+<div align="center">
+
 ![Demo](/frontend/public/demo_ERN_24.gif)
+
+</div>
 
 This project was shown during the European Research Night 2024 in Bari. Therefore the degree course prediction was limited to what proposed by the University of Bari in that moment. 
 So, a Retreival Augmeted Generation (RAG) mechanism has been implemented at the end of the conversation to retrieve the three degree couses most similar to the student's interests.
 
-> [!INFO]
-> This is a demo shown during the European Research Night 2024 in Bari, so the conversation is in Italian.
+> [!NOTE]
+> Since this is a demo for the European Research Night 2024 in Bari, the conversation is in Italian.
 
 ## 🚀 Getting started
 
