@@ -33,13 +33,14 @@ def main():
     
 
 def predict(chat, count, usr_answer):
+    print(count)
     system_prompt = ""
     user_prompt =  ""
 
     user_prompt = CareerPromptGenerator.generate_prompt("user", count, usr_answer)
 
-    if count == 0:
-        system_prompt = CareerPromptGenerator.generate_prompt("system", 1)
+    if count == 1:
+        system_prompt = CareerPromptGenerator.generate_prompt("system", count)
 
         chat = [
             {

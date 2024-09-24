@@ -40,8 +40,8 @@ def predict(chat, count, usr_answer):
 
     sources = []
 
-    if count == 0:
-        system_prompt = DegreePromptGenerator.generate_prompt("system", 1)
+    if count == 1:
+        system_prompt = DegreePromptGenerator.generate_prompt("system", count)
 
         chat = [
             {
