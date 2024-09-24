@@ -1,23 +1,37 @@
-YourFutureGuide
-==============================
-<p align="center">
-  <img src="/frontend/public/YourFutureGuide.png" alt="logo">
+<h1 align='center'>
+  Your Future Guide
+</h1>
+
+
+<div align="center">
+
+   ![Logo](/frontend/public/YourFutureGuide.png)
 
    [![python](https://img.shields.io/badge/Python-3.11.5-3776AB.svg?style=flat&logo=python&logoColor=white)](https://www.python.org)
    [![angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.dev/)
-</p>
 
-TODO
+</div>
 
+**YourFutureGuide** is an LLM-based application to discover which is the most suitable educational or professional path. [LLaMa3-7b](https://ollama.com/library/llama3) will determine so by investigate your interests and aspirations in only 5 shots.
 
+![Demo](/frontend/public/demo_ERN_24.gif)
 
-## Getting started
+This project was shown during the European Research Night 2024 in Bari. Therefore the degree course prediction was limited to what proposed by the University of Bari in that moment. 
+So, a Retreival Augmeted Generation (RAG) mechanism has been implemented at the end of the conversation to retrieve the three degree couses most similar to the student's interests.
+
+> [!INFO]
+> This is a demo shown during the European Research Night 2024 in Bari, so the conversation is in Italian.
+
+## 🚀 Getting started
 
 We recommend to use [Python 3.11.5](https://python.domainunion.de/downloads/release/python-3115/) to run our code, due to possible incompatibiities with newr versions.
 
-### Installation
-The installation process is described below:
+Moreover, the frontend part of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.4. So, be sure that Angular is installed on your machine. You can find details on how to install it in the [Angular Github repository(https://github.com/angular/angular-cli)].
 
+### 🛠️ Installation
+The steps to correctly install the project are described below (both backend and frontend).
+
+#### 🐍 Python backend
 1. Clone this repository:
    ```
    git clone https://github.com/llaraspata/YourFutureGuide.git
@@ -31,12 +45,44 @@ The installation process is described below:
    ```
    pip install -r requirements.txt
    ```
-TODO angular
 
-### Run YourFutureGuide
+#### 🖥️ Angular frontend
+Once te repository has been cloned:
 
-TODO
+1. Move to the frontend directory:
+   ```
+   cd ./frontend
+   ```
+2. Install the dependencies
+   ```
+   npm install
+   ```
 
+### 🗄️ Import documents in ChromaDB
+
+The vectorial database Chroma is used to store PDF files used for RAG. You need to follow the steps below to insert documents in the DB and use them in the prediction process.
+
+1. Upload your PDF files in the directory `data`
+2. Insert them in the ChromaDB
+   ```
+   python ./backend/data/populate_db.py
+   ```
+
+### ✨ Run YourFutureGuide
+
+To run the **python backend** follow the steps below: 
+1. Move to the directory `backend`
+2. Run the uvicorn server
+   ```
+   uvicorn main:app --reload
+   ```
+
+To run the **angular frontend** follow the steps below: 
+1. Move to the directory `frontend`
+2. Run the angular client
+   ```
+   ng serve
+   ```
 
 ## Citation
 
@@ -48,72 +94,3 @@ year = {2024},
 url = {https://github.com/llaraspata/YourFutureGuide/}
 }
 ```
-
-
-
-
-Project Organization (TODO)
-------------
-
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Raw questionnaires derived from the augmentation process.
-    │   ├── interim        <- Intermediate augmented data that has been transformed to JSON.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The data used as starting point from this project
-    │                         (taken from Talentia Software HCM).
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Predictions for each run experiments. For each of the a log and a picke file are saved.
-    │
-    ├── notebooks          <- Jupyter notebooks used to illustrate class usage, dataset insights, and experimental results.
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment.
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    │
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   ├── convert_qst_to_json.py
-    │   │   └── TFQuestionnairesDataset.py
-    │   │
-    │   ├── prompts        <- Catalog of the employed prompts
-    │   │   ├── qst_to_json_prompts.py
-    │   │   ├── QstToJsonPromptGenerator.py
-    │   │   ├── QstToJsonScenarioGenerator.py
-    │   │   │
-    │   │   ├── prediction_prompts.py
-    │   │   ├── PredictionPromptGenerator.py
-    │   │   ├── PredictionScenarioGenerator.py
-    │   │   │
-    │   │   ├── topic_modeling_prompts.py
-    │   │   ├── TopicModelingPromptGenerator.py
-    │   │   └── TopicModelingScenarioGenerator.py
-    │   │
-    │   ├── models         <- Scripts to run experiments and evaluations
-    │   │   ├── experiment_config.json
-    │   │   │
-    │   │   ├── predict.py
-    │   │   │
-    │   │   ├── QuestionnairesEvaluator.py
-    │   │   ├── ModelEvaluator.py
-    │   │   └── evaluate.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       ├── experiment_pairs.json
-    │       │
-    │       ├── GlobalResultVisualizer.py
-    │       ├── PairResultVisualizer.py
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
-
-
---------
-
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
