@@ -1,4 +1,4 @@
-<div class="chat-container">
+<div class="chat-container" #chatContainer>
     <div *ngFor="let msg of chatMessagesUI; trackBy: trackByMessageId">
         
         <div *ngIf="msg.type === 'R'" class="message-wrapper received">

@@ -18,6 +18,8 @@ import { CommonModule } from '@angular/common';
 
 export class ChatComponent {
   @ViewChild("message", { static: false }) message?: ElementRef;
+  @ViewChild('chatContainer') private chatContainer!: ElementRef;
+
   selectedOption: number | null = null;
 
   chatMessagesUI: Message[] = [];
@@ -139,7 +141,6 @@ export class ChatComponent {
       };
       this.isWriting = false;
       this.chatMessagesUI.push(newMsg);
-
     }
     
   }
@@ -180,6 +181,7 @@ export class ChatComponent {
     };
 
     this.chatMessagesUI.push(newMsg);
+
     this.message.nativeElement.value = "";
 
     this.isWriting = true;
@@ -195,10 +197,9 @@ export class ChatComponent {
       };
 
       this.chatMessagesUI.push(llmMsg);
+
       this.isWriting = false;
       this.qst_count++;
-
-      console.log(response.end_of_chat);
 
       if (response.end_of_chat) {
         this.chatMessagesUI.push(this.finalMessage);
@@ -214,6 +215,18 @@ export class ChatComponent {
     };
 
     return this.http.post(this.apiToCall, jsonPayload);
+  }
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    } catch (err) {
+      console.error("Errore nello scorrimento della chat: ", err);
+    }
   }
   
 

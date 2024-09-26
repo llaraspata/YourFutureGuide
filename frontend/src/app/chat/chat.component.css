@@ -43,6 +43,7 @@
     overflow-wrap: break-word;
     word-break: break-all;
     white-space: normal;
+    font-size: 1.2rem;
 }
 
 .message p {
@@ -92,7 +93,7 @@
     border: 1px solid #ccc;
     outline: none;
     font-family: "Outfit", sans-serif;
-    font-size: 14px;
+    font-size: 1.2rem;
 }
 
 .message-input button {
@@ -103,7 +104,7 @@
     background-color: var(--primary-color);
     color: white;
     font-family: "Outfit", sans-serif;
-    font-size: 14px;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -112,9 +113,6 @@
     background-color: var(--hover-color);
 }
 
-button.bi-send-fill {
-    color: white;
-  }
   
 
 /* Container per le opzioni */
@@ -132,6 +130,7 @@ button.bi-send-fill {
     border-radius: 20px;
     border: 1px solid var(--border-color);
     font-family: "Outfit", sans-serif;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
     word-wrap: break-word;
