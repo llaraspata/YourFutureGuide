@@ -1,0 +1,36 @@
+:host {
+    --content-padding: 10px;
+  }
+
+  header {
+    display: flex;
+    align-items: flex-start; /* Center vertically */
+    justify-content: center; /* Center horizontally */  
+    height: auto;
+    padding: var(--content-padding);
+    text-decoration: none;
+  }
+  
+  .content {
+    padding: var(--content-padding);
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
+
+  
+  header.model-name a {
+    padding-left: 20px;
+    text-decoration: none;
+  }
+  header.model-name a::after {
+    content: "\203A";
+    margin-left: 5px;
+  }
+  
+  .model-logo {
+    color: var(--secondary-color);
+    font-size: 15px; /* Increase font size */
+  }
+
+  

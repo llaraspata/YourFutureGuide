@@ -1,8 +1,6 @@
 <div class="chat-container">
-    <!-- Loop through the chatMessagesUI using *ngFor -->
     <div *ngFor="let msg of chatMessagesUI; trackBy: trackByMessageId">
         
-        <!-- Received message block -->
         <div *ngIf="msg.type === 'R'" class="message-wrapper received">
             <img class="avatar" src="llama.png" alt="User Avatar">
             <div class="message received">
@@ -10,7 +8,6 @@
             </div>
         </div>
             
-        <!-- If the message contains options, display the option card -->
         <div *ngIf="msg.options.length > 0" class="option-card">
             <div *ngFor="let opt of msg.options" class="option" [id]="opt.id" (click)="startConversation(opt.id)">
                 <p>
@@ -20,7 +17,6 @@
             </div>
         </div>
 
-        <!-- Sent message block -->
         <div *ngIf="msg.type !== 'R'" class="message-wrapper sent">
             <div class="message sent">
                 <p>{{ msg.content }}</p>
@@ -42,6 +38,6 @@
 
 
 <div class="message-input">
-    <input type="text" placeholder="Type your message..." #message/>
+    <input type="text" placeholder="Scrivi la tua risposta..." #message/>
     <button (click)="sendMessage()">Send</button>
 </div>
