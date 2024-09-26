@@ -31,7 +31,7 @@ export class ChatComponent {
   isWriting = false;
 
   apiToCall = "";
-  qst_count = 0;
+  qst_count = 1;
 
   finalMessage: Message = {
     "display_order": 0,
@@ -71,12 +71,12 @@ export class ChatComponent {
         "id": 2,
         "icon": "✅",
         "content": "L'ho trovato interessante e piuttosto accurato!",
-        "message": "Perfetto! Sono contento di averti aiutato!"
+        "message": "Perfetto! Sono contento di averti aiutato!✨"
       },
       {
         "id": 3,
         "icon": "❌",
-        "content": "Non mi ha convinto del tutto... Riproviamo, dai!",
+        "content": "Non mi ha convinto del tutto... Riproviamo, dai!💪",
         "message": ""
       },
     ];
@@ -91,6 +91,8 @@ export class ChatComponent {
   }
 
   async startConversation(choosenOption: number) {
+    console.log("QST count ->", this.qst_count);
+
     this.selectedOption = choosenOption;
 
     this.isWriting = true;
