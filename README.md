@@ -26,6 +26,8 @@ So, a Retreival Augmeted Generation (RAG) mechanism has been implemented at the 
 > [!NOTE]
 > Since this is a demo for the European Research Night 2024 in Bari, the conversation is in Italian.
 
+Further technical details concerning the employed propmpts are reported in the [backend readme](/backend/README.md).
+
 ## 🚀 Getting started
 
 We recommend to use [Python 3.11.5](https://python.domainunion.de/downloads/release/python-3115/) to run our code, due to possible incompatibiities with newr versions.
