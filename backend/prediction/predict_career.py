@@ -33,7 +33,6 @@ def main():
     
 
 def predict(chat, count, usr_answer):
-    print(count)
     system_prompt = ""
     user_prompt =  ""
 
