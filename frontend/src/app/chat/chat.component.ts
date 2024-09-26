@@ -76,7 +76,7 @@ export class ChatComponent {
       {
         "id": 3,
         "icon": "❌",
-        "content": "Non mi ha convinto del tutto... Riproviamo, dai!💪",
+        "content": "Non mi ha convinto del tutto... Riproviamo, dai!",
         "message": ""
       },
     ];
