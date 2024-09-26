@@ -134,7 +134,6 @@ def ask_llm(request: Request, chat_payload: ChatPayload):
     """
     TODO
     """
-    print(chat_payload)
     chat_messages, llm_output = predict_degree.predict(chat_payload.chat, chat_payload.qst_count, chat_payload.usr_answer)
 
     response = {
