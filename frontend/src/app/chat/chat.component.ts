@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 
 export class ChatComponent {
   @ViewChild("message", { static: false }) message?: ElementRef;
+  selectedOption: number | null = null;
 
   chatMessagesUI: Message[] = [];
   chatMessagesLLM: LlmMessage[] = [];
@@ -67,17 +68,17 @@ export class ChatComponent {
 
     let finalOptions = [
       {
-        "id": 0,
+        "id": 2,
         "icon": "✅",
         "content": "L'ho trovato interessante e piuttosto accurato!",
-        "message": ""
+        "message": "Perfetto! Sono contento di averti aiutato!"
       },
       {
-        "id": 1,
+        "id": 3,
         "icon": "❌",
-        "content": "Non mi ha convinto del tutto...",
+        "content": "Non mi ha convinto del tutto... Riproviamo, dai!",
         "message": ""
-      }
+      },
     ];
 
     this.finalMessage.options = finalOptions;
@@ -90,36 +91,55 @@ export class ChatComponent {
   }
 
   async startConversation(choosenOption: number) {
+    this.selectedOption = choosenOption;
+
     this.isWriting = true;
 
-    this.apiToCall = "";
+    if (choosenOption < 2) {
+      this.apiToCall = "";
 
-    if (choosenOption === 0) {
-      this.apiToCall = this.degreePredictionApi;
-    } 
-    else if (choosenOption === 1) {
-      this.apiToCall = this.careerPredictionApi;
+      if (choosenOption === 0) {
+        this.apiToCall = this.degreePredictionApi;
+      } 
+      else if (choosenOption === 1) {
+        this.apiToCall = this.careerPredictionApi;
+      }
+
+      this.addChoiseToChat(choosenOption);
+
+      let newMsg = {
+        "display_order": this.order++,
+        "type": "R",
+        "content": "",
+        "options": []
+      };
+
+      this.postStartConversation().subscribe((response: any) => {
+        this.chatMessagesLLM = response.chat_messages;
+
+        newMsg.content = response.llm_output;
+
+        this.chatMessagesUI.push(newMsg);
+    
+        this.qst_count++;
+        this.isWriting = false;
+      });
     }
-
-    this.addChoiseToChat(choosenOption);
-
-    let newMsg = {
-      "display_order": this.order++,
-      "type": "R",
-      "content": "",
-      "options": []
-    };
-
-    this.postStartConversation().subscribe((response: any) => {
-      this.chatMessagesLLM = response.chat_messages;
-
-      newMsg.content = response.llm_output;
-
-      this.chatMessagesUI.push(newMsg);
-  
-      this.qst_count++;
+    else if (choosenOption === 3) {
+      window.location.reload();
+    }
+    else if (choosenOption === 2) {
+      let newMsg = {
+        "display_order": this.order++,
+        "type": "R",
+        "content": this.finalMessage.options[0].message,
+        "options": []
+      };
       this.isWriting = false;
-    });
+      this.chatMessagesUI.push(newMsg);
+
+    }
+    
   }
 
   addChoiseToChat(choosenOption: number) {
