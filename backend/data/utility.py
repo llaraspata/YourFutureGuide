@@ -6,7 +6,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from langchain_community.vectorstores import Chroma
 
-CHROMA_PATH = "chroma"
+CHROMA_PATH = "/home/llaraspata3/YourFutureGuide/chroma"
 DATA_PATH = "/home/llaraspata3/YourFutureGuide/data"
 
 
